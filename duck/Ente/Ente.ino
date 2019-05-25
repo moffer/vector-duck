@@ -126,57 +126,57 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     /***********************Forward****************************/
   //If state is equal with letter 'F', boat will go forward!
     if (payload[0] == 'F') {
-      analogWrite(motorA1, vSpeed); analogWrite(motorA2, 0);
-        analogWrite(motorB1, vSpeed); analogWrite(motorB2, 0); 
+      digitalWrite(motorA1, HIGH); digitalWrite(motorA2, LOW);
+        digitalWrite(motorB1, HIGH); digitalWrite(motorB2, LOW); 
     }
-  /**********************Forward Left************************/
-  //If state is equal with letter 'G', boat will go forward left
-    else if (payload[0] == 'G') {
-      analogWrite(motorA1, 100);    analogWrite(motorA2, 0);  
-        analogWrite(motorB1, vSpeed); analogWrite(motorB2, 0); 
-    }
-  /**********************Forward Right************************/
-  //If state is equal with letter 'I', boat will go forward right
-    else if (payload[0] == 'I') {
-        analogWrite(motorA1, vSpeed); analogWrite(motorA2, 0); 
-        analogWrite(motorB1, 100);    analogWrite(motorB2, 200); 
-    }
+//  /**********************Forward Left************************/
+//  //If state is equal with letter 'G', boat will go forward left
+//    else if (payload[0] == 'G') {
+//      analogWrite(motorA1, 100);    analogWrite(motorA2, 0);  
+//        analogWrite(motorB1, vSpeed); analogWrite(motorB2, 0); 
+//    }
+//  /**********************Forward Right************************/
+//  //If state is equal with letter 'I', boat will go forward right
+//    else if (payload[0] == 'I') {
+//        analogWrite(motorA1, vSpeed); analogWrite(motorA2, 0); 
+//        analogWrite(motorB1, 100);    analogWrite(motorB2, 200); 
+//    }
   /***********************Backward****************************/
   //If state is equal with letter 'B', boat will go backward
     else if (payload[0] == 'B') {
-      analogWrite(motorA1, 0);   analogWrite(motorA2, vSpeed); 
-        analogWrite(motorB1, 0);   analogWrite(motorB2, vSpeed); 
+      digitalWrite(motorA1, LOW);   digitalWrite(motorA2, HIGH); 
+        digitalWrite(motorB1, LOW);   digitalWrite(motorB2, HIGH); 
     }
-  /**********************Backward Left************************/
-  //If state is equal with letter 'H', boat will go backward left
-    else if (payload[0] == 'H') {
-      analogWrite(motorA1, 0);   analogWrite(motorA2, 100); 
-        analogWrite(motorB1, 0); analogWrite(motorB2, vSpeed); 
-    }
-  /**********************Backward Right************************/
-  //If state is equal with letter 'J', boat will go backward right
-    else if (payload[0] == 'J') {
-      analogWrite(motorA1, 0);   analogWrite(motorA2, vSpeed); 
-        analogWrite(motorB1, 0);   analogWrite(motorB2, 100); 
-    }
+//  /**********************Backward Left************************/
+//  //If state is equal with letter 'H', boat will go backward left
+//    else if (payload[0] == 'H') {
+//      analogWrite(motorA1, 0);   analogWrite(motorA2, 100); 
+//        analogWrite(motorB1, 0); analogWrite(motorB2, vSpeed); 
+//    }
+//  /**********************Backward Right************************/
+//  //If state is equal with letter 'J', boat will go backward right
+//    else if (payload[0] == 'J') {
+//      analogWrite(motorA1, 0);   analogWrite(motorA2, vSpeed); 
+//        analogWrite(motorB1, 0);   analogWrite(motorB2, 100); 
+//    }
   /***************************Left*****************************/
   //If state is equal with letter 'L', wheels will turn left
     else if (payload[0] == 'L') {
-      analogWrite(motorA1, 0);     analogWrite(motorA2, vSpeed); 
-        analogWrite(motorB1, vSpeed);analogWrite(motorB2, 0); 
+      digitalWrite(motorA1, LOW);     digitalWrite(motorA2, HIGH); 
+        digitalWrite(motorB1, HIGH);digitalWrite(motorB2, LOW); 
     }
   /***************************Right*****************************/
   //If state is equal with letter 'R', wheels will turn right
     else if (payload[0] == 'R') {
-      analogWrite(motorA1, vSpeed);analogWrite(motorA2, 0); 
-        analogWrite(motorB1, 0);     analogWrite(motorB2, vSpeed);    
+      digitalWrite(motorA1, HIGH);digitalWrite(motorA2, LOW); 
+        digitalWrite(motorB1, LOW);     digitalWrite(motorB2, HIGH);      
     }
 
   /************************Stop*****************************/
   //If state is equal with letter 'S', stop the boat
     else if (payload[0] == 'S'){
-        analogWrite(motorA1, 0);  analogWrite(motorA2, 0); 
-        analogWrite(motorB1, 0);  analogWrite(motorB2, 0);
+        digitalWrite(motorA1, LOW);  digitalWrite(motorA2, LOW); 
+        digitalWrite(motorB1, LOW);  digitalWrite(motorB2, LOW);
     }
     break;
   }
