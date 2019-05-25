@@ -4,7 +4,7 @@
 #include <ESP8266WebServer.h>
 #include <WebSocketsServer.h>
 
-#include "Wire.h" // This library allows you to communicate with I2C devices.
+#include <Wire.h> // This library allows you to communicate with I2C devices.
 
 // WLAN SSID Define
 #ifndef APSSID
@@ -88,7 +88,10 @@ void setup() {
   pinMode(motorA1, OUTPUT);
   pinMode(motorA2, OUTPUT);
   pinMode(motorB1, OUTPUT);
-  pinMode(motorB2, OUTPUT);  
+  pinMode(motorB2, OUTPUT);
+  digitalWrite(motorA1, LOW);  digitalWrite(motorA2, LOW); 
+  digitalWrite(motorB1, LOW);  digitalWrite(motorB2, LOW);
+  
 
 
 //I2C init 
@@ -216,7 +219,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     /************************Gyro Regelung*****************************/
   //If state is equal with letter 'X', starts the gyro Regelung
     else if (payload[0] == 'X'){
-        forward();
+        digitalWrite(motorA1, HIGH); digitalWrite(motorA2, LOW);
+        digitalWrite(motorB1, HIGH); digitalWrite(motorB2, LOW); 
 //  Serial.print("gogogogog");
  // Serial.println();
   delay(1000);
@@ -231,7 +235,8 @@ check_gyro();
     delay(100);
     }
     
-    forward(); //etwasgrade fahren
+    digitalWrite(motorA1, HIGH); digitalWrite(motorA2, LOW);
+        digitalWrite(motorB1, HIGH); digitalWrite(motorB2, LOW); 
   //Serial.print("gogogogog");
   //Serial.println();
     delay(1000);
