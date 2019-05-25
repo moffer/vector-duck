@@ -14,21 +14,23 @@
 
 
 #define LED_BUILTIN 16 
-#define D1 5 //Moter Rechts 0
-#define D2 4 //Motor Rechts 1
+#define D1 5 
+#define D2 4 
 #define D3 0 
 #define D4 2  //SDA
 #define D5 14 //SCL
-#define D6 12 //Motor Links 0
-#define D7 13 //Motor Links 1
+#define D6 12 
+#define D7 13 
 #define D8 15
 #define RX
 #define TX
 #define A0
  
 
+// Motor A rechts
 #define motorA1 D1  //Achtung das ist kein PWM pin  PWM nur an D6,D8,D7  TODO PWM mit Oszi testen ?!
 #define motorA2 D2  //Achtung das ist kein PWM pin 
+// Motor B links
 #define motorB1 D6
 #define motorB2 D7
 
@@ -161,9 +163,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
     else if (payload[0] == '4'){
       vSpeed=255;}
 
-    /***********************Forward****************************/
-  //If state is equal with letter 'F', boat will go forward!
-    if (payload[0] == 'F') {
+    /***********************Backward****************************/
+  //If state is equal with letter 'B', boat will go backward!
+    if (payload[0] == 'B') {
       digitalWrite(motorA1, HIGH); digitalWrite(motorA2, LOW);
         digitalWrite(motorB1, HIGH); digitalWrite(motorB2, LOW); 
     }
@@ -179,9 +181,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t lenght)
 //        analogWrite(motorA1, vSpeed); analogWrite(motorA2, 0); 
 //        analogWrite(motorB1, 100);    analogWrite(motorB2, 200); 
 //    }
-  /***********************Backward****************************/
-  //If state is equal with letter 'B', boat will go backward
-    else if (payload[0] == 'B') {
+  /***********************Forward****************************/
+  //If state is equal with letter 'F', boat will go forward
+    else if (payload[0] == 'F') {
       digitalWrite(motorA1, LOW);   digitalWrite(motorA2, HIGH); 
         digitalWrite(motorB1, LOW);   digitalWrite(motorB2, HIGH); 
     }

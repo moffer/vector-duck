@@ -9,13 +9,13 @@
             <v-icon>arrow_upward</v-icon>
           </v-btn>
           <div>
-            <v-btn @click="backward()">
+            <v-btn @click="left()">
               <v-icon>arrow_back</v-icon>
             </v-btn>
             <v-btn @click="gyro()">
               <v-icon>replay</v-icon>
             </v-btn>
-            <v-btn @canplay="forward()">
+            <v-btn @click="right()">
               <v-icon>arrow_forward</v-icon>
             </v-btn>
           </div>
@@ -44,21 +44,26 @@ export default {
       this.websocket.send("asdf");
     },
     forward() {
+      console.log('vor')
       this.websocket.send("F");
     },
     backwards() {
+      console.log('rück')
       this.websocket.send("B");
     },
     left() {
+      console.log('left')
       this.websocket.send("L");
     },
     right() {
+      console.log('rechts')
       this.websocket.send("R");
     },
     gyro() {
       this.websocket.send("X");
     },
     stop() {
+      console.log('stop')
       this.websocket.send("S");
     }
   }
