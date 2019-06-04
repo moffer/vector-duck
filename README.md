@@ -4,6 +4,11 @@ Mittels dieses Projekt soll die Vector-Ente aus dem Strudel gebracht werden.
 # Informationen
 Mikroboard: ESP-8266
 
+# Projektstruktur
+- Unter `duck` liegt die aktuelle Software zur Steuerung der Ente. 
+- Unter `frontend` liegt das Vue-Projekt zum Steuern der Ente mittels des Controllers.
+- Unter `esp8266-examples` sind einige Beispiel-Projekte, die mit der Hardware kommunizieren. 
+
 
 # Setup Arduino IDE
 Um das Board anzusprechen, muss es in der IDE hinzugefügt werden. Dazu folgendes einstellen: 
